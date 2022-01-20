@@ -1,0 +1,328 @@
+<?xml version="1.0"?>
+<TriggernometryExport Version="1">
+  <ExportedFolder Id="e995bb0f-3ddb-49b4-a9f0-7234ba616da9" Name="MNK" Enabled="true">
+    <Folders>
+      <Folder FFXIVJobFilterEnabled="True" FFXIVJobFilter="524288" Id="7fc4d789-e56f-40ca-b695-e014f88ae97b" Name="Variables" Enabled="true">
+        <Folders />
+        <Triggers>
+          <Trigger Enabled="true" Source="FFXIVNetwork" Name="Default Unset" Id="076b0967-f859-43d2-993c-3053e169a894" RegularExpression="" Description="====This trigger essentially &quot;initialize&quot; all necessary variables.&#xD;&#xA;&#xD;&#xA;====It MUST ONLY be fired by other triggers, meaning the regular expression field and trigger condition must be BLANK.&#xD;&#xA;&#xD;&#xA;====It is by default fired by the &quot;Startup&quot; trigger and any triggers that require resetting all current variables, such as in the events&#xD;&#xA;of deaths or instance wipes.&#xD;&#xA;&#xD;&#xA;====Avoid making changes to this trigger unless you know what you're doing.">
+            <Actions>
+              <Action OrderNumber="1" VariableName="Leaden" VariableExpression="0" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="2" VariableName="DFist" VariableExpression="0" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="3" VariableName="Demolish" VariableExpression="0" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="4" VariableName="CurrentForm" VariableExpression="0" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="5" VariableName="Opo" VariableExpression="0" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="6" VariableName="Raptor" VariableExpression="0" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="7" VariableName="Coeurl" VariableExpression="0" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="8" VariableName="AuraWidth" VariableExpression="0" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="9" TextAuraEffect="Bold" TextAuraFontSize="24" TextAuraForeground="Yellow" TextAuraName="Unload Overlay" TextAuraExpression="Unloaded Monk Overlay" TextAuraXIniExpression="847" TextAuraYIniExpression="549" TextAuraWIniExpression="260" TextAuraHIniExpression="63" TextAuraOIniExpression="100" TextAuraTTLTickExpression="5-${_since}" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="And" />
+          </Trigger>
+          <Trigger Enabled="true" Source="FFXIVNetwork" Name="DFist" Id="6e672525-cc13-419a-b1ed-dfe3ab8c4abf" RegularExpression="(?&lt;type&gt;(?:26|30))\|(?&lt;timestamp&gt;(?:[^|]*))\|BB9\|Disciplined Fist\|(?&lt;duration&gt;(?:[^|]*))\|(?&lt;id&gt;[A-F0-9]{8})\|(?&lt;player&gt;[a-zA-Z-' ]{3,21})" PrevActions="Interrupt">
+            <Actions>
+              <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="DFist" VariableExpression="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" RefireInterrupt="True">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="Numeric" ExpressionR="26" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="DFist" VariableExpression="0" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" ExecutionDelayExpression="(${duration}*1000)-7000" RefireInterrupt="True">
+                <Condition Enabled="true" Grouping="Not">
+                  <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="Numeric" ExpressionR="30" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+                <Conditions />
+              </Action>
+            </Actions>
+            <Condition Enabled="true" Grouping="And">
+              <ConditionSingle Enabled="true" ExpressionL="${player}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="RegexMatch" />
+            </Condition>
+          </Trigger>
+          <Trigger Enabled="true" Source="FFXIVNetwork" Name="Leaden Fist" Id="dd53de1e-cf11-4918-8e6b-c9f81e4c615a" RegularExpression="(?&lt;type&gt;(?:26|30))\|.+?\|745\|Leaden Fist\|(?&lt;duration&gt;(?:[^|]*))\|(?&lt;id&gt;[A-F0-9]{8})\|(?&lt;player&gt;[a-zA-Z-' ]{3,21})" PrevActions="Interrupt">
+            <Actions>
+              <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Leaden" VariableExpression="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" RefireInterrupt="True">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="Numeric" ExpressionR="26" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="Leaden" VariableExpression="0" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" RefireInterrupt="True">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="Numeric" ExpressionR="30" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Action>
+            </Actions>
+            <Condition Enabled="true" Grouping="And">
+              <ConditionSingle Enabled="true" ExpressionL="${player}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="RegexMatch" />
+            </Condition>
+          </Trigger>
+          <Trigger Enabled="true" Source="FFXIVNetwork" Name="Demolish" Id="1c9cd56f-a784-408d-8df6-ca9b2ab91001" RegularExpression="(?&lt;type&gt;(?:26|30))\|(?&lt;timestamp&gt;(?:[^|]*))\|F6\|Demolish\|(?&lt;duration&gt;(?:[^|]*))\|(?&lt;sourceId&gt;(?:[^|]*))\|(?&lt;source&gt;(?:[^|]*))\|(?&lt;targetId&gt;(?:[^|]*))\|(?&lt;target&gt;(?:[^|]*))" PrevActions="Interrupt">
+            <Actions>
+              <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Demolish" VariableExpression="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" RefireInterrupt="True">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="Numeric" ExpressionR="26" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Demolish" VariableExpression="0" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable" ExecutionDelayExpression="(${duration}*1000)-5000" RefireInterrupt="True">
+                <Condition Enabled="true" Grouping="Not">
+                  <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="Numeric" ExpressionR="30" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Action>
+            </Actions>
+            <Condition Enabled="true" Grouping="And">
+              <ConditionSingle Enabled="true" ExpressionL="${source}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="RegexMatch" />
+              <ConditionSingle Enabled="true" ExpressionL="${target}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="RegexNotMatch" />
+            </Condition>
+          </Trigger>
+          <Trigger Enabled="true" Source="FFXIVNetwork" Name="Default" Id="1aecc4e7-e257-4fad-bb9c-270e5876e585" RegularExpression="" Description="====This trigger essentially &quot;initialize&quot; all necessary variables.&#xD;&#xA;&#xD;&#xA;====It MUST ONLY be fired by other triggers, meaning the regular expression field and trigger condition must be BLANK.&#xD;&#xA;&#xD;&#xA;====It is by default fired by the &quot;Startup&quot; trigger and any triggers that require resetting all current variables, such as in the events&#xD;&#xA;of deaths or instance wipes.&#xD;&#xA;&#xD;&#xA;====Avoid making changes to this trigger unless you know what you're doing.">
+            <Actions>
+              <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Leaden" VariableExpression="0" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="DFist" VariableExpression="0" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="3" VariableOp="SetNumeric" VariableName="Demolish" VariableExpression="0" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="4" VariableOp="SetNumeric" VariableName="CurrentForm" VariableExpression="0" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="5" VariableOp="SetNumeric" VariableName="Opo" VariableExpression="0" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="6" VariableOp="SetNumeric" VariableName="Raptor" VariableExpression="0" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="7" VariableOp="SetNumeric" VariableName="Coeurl" VariableExpression="0" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="And" />
+          </Trigger>
+        </Triggers>
+      </Folder>
+      <Folder FFXIVJobFilterEnabled="True" FFXIVJobFilter="524288" Id="ace886b4-980a-4de0-a581-0eb4d16a4ec2" Name="Settings" Enabled="true">
+        <Folders />
+        <Triggers>
+          <Trigger Enabled="true" Name="Settings" Id="5b892d6f-cc3c-413e-bd1b-f3f305cb333c" RegularExpression="">
+            <Actions>
+              <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="AuraWidth" VariableExpression="36" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+        </Triggers>
+      </Folder>
+      <Folder FFXIVJobFilterEnabled="True" FFXIVJobFilter="524288" Id="c9bad4ac-ca7e-4680-af0a-34fb4f08ecfc" Name="Misc" Enabled="true">
+        <Folders>
+          <Folder Id="6749519d-7fe4-4a76-9c57-46c8ea6fe994" Name="Form Change" Enabled="true">
+            <Folders />
+            <Triggers>
+              <Trigger Enabled="true" Source="FFXIVNetwork" Name="LostForm" Id="fb17d015-aa50-4c2c-a0cc-de950fb35e3e" RegularExpression="(?&lt;type&gt;(?:26|30))\|.+?\|(?&lt;form&gt;(?:6[BCD]))\|.+?\|(?&lt;duration&gt;(?:[^|]*))\|(?&lt;id&gt;[A-F0-9]{8})\|(?&lt;player&gt;[a-zA-Z-' ]{3,21})">
+                <Actions>
+                  <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Opo" VariableExpression="0" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable">
+                    <Condition Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${form}" ExpressionTypeL="String" ExpressionR="6B" ExpressionTypeR="String" ConditionType="StringEqualCase" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="Raptor" VariableExpression="0" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable">
+                    <Condition Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${form}" ExpressionTypeL="String" ExpressionR="6C" ExpressionTypeR="String" ConditionType="StringEqualCase" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="3" VariableOp="SetNumeric" VariableName="Coeurl" VariableExpression="0" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable">
+                    <Condition Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${form}" ExpressionTypeL="String" ExpressionR="6D" ExpressionTypeR="String" ConditionType="StringEqualCase" />
+                    </Condition>
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${player}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                  <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="Numeric" ExpressionR="30" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Trigger>
+              <Trigger Enabled="true" Source="FFXIVNetwork" Name="GainForm" Id="2db84b40-5664-49da-8365-e3511b85dff9" RegularExpression="(?&lt;type&gt;(?:26|30))\|.+?\|(?&lt;form&gt;(?:6[BCD]))\|.+?\|(?&lt;duration&gt;(?:[^|]*))\|(?&lt;id&gt;[A-F0-9]{8})\|(?&lt;player&gt;[a-zA-Z-' ]{3,21})">
+                <Actions>
+                  <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Opo" VariableExpression="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable">
+                    <Condition Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${form}" ExpressionTypeL="String" ExpressionR="6B" ExpressionTypeR="String" ConditionType="StringEqualCase" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="2" VariableOp="SetNumeric" VariableName="Raptor" VariableExpression="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable">
+                    <Condition Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${form}" ExpressionTypeL="String" ExpressionR="6C" ExpressionTypeR="String" ConditionType="StringEqualCase" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="3" VariableOp="SetNumeric" VariableName="Coeurl" VariableExpression="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Variable">
+                    <Condition Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${form}" ExpressionTypeL="String" ExpressionR="6D" ExpressionTypeR="String" ConditionType="StringEqualCase" />
+                    </Condition>
+                  </Action>
+                </Actions>
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${player}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                  <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="Numeric" ExpressionR="26" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Trigger>
+            </Triggers>
+          </Folder>
+        </Folders>
+        <Triggers />
+      </Folder>
+      <Folder Id="c8831e65-05cd-454d-a2f4-91560e3af6dc" Name="Overlay" Enabled="true">
+        <Folders />
+        <Triggers>
+          <Trigger Enabled="true" Source="FFXIVNetwork" Sequential="True" Name="+ Unload" Id="77049240-5817-48de-8f5b-822f4caa114e" RegularExpression="\A00\|[^\|]*\|0038\|\|!mnkunload">
+            <Actions>
+              <Action OrderNumber="0" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" TriggerId="076b0967-f859-43d2-993c-3053e169a894" TriggerForce="regexp,conditions" ActionType="Trigger">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="2" AuraOp="DeactivateAura" AuraImageMode="Zoom" AuraName="Leaden Fist-Image-Aura" AuraImage="https://raw.githubusercontent.com/dansa/FFXIV-Trigg/master/Resources/ComboGIFgreen.gif" AuraXIniExpression="579" AuraYIniExpression="650" AuraWIniExpression="${var:AuraWidth}" AuraHIniExpression="${var:AuraWidth}" AuraOIniExpression="100" AuraOTickExpression="${var:Leaden}*${var:Opo}*100" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Asynchronous="False" DebugLevel="None">
+                <Condition Enabled="false" Grouping="And" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="3" AuraOp="DeactivateAura" AuraImageMode="Zoom" AuraName="DK-Image-Aura" AuraImage="https://raw.githubusercontent.com/dansa/FFXIV-Trigg/master/Resources/ComboGIFgreen.gif" AuraXIniExpression="575" AuraYIniExpression="605" AuraWIniExpression="${var:AuraWidth}" AuraHIniExpression="${var:AuraWidth}" AuraOIniExpression="100" AuraOTickExpression="if(${var:Leaden}=1,0,1)*${var:Opo}*100" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Asynchronous="False" DebugLevel="None">
+                <Condition Enabled="false" Grouping="And" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="4" AuraOp="DeactivateAura" AuraImageMode="Zoom" AuraName="Snap Punch-Image-Aura" AuraImage="https://raw.githubusercontent.com/dansa/FFXIV-Trigg/master/Resources/ComboGIFgreen.gif" AuraXIniExpression="1195" AuraYIniExpression="681" AuraWIniExpression="${var:AuraWidth}" AuraHIniExpression="${var:AuraWidth}" AuraOIniExpression="100" AuraOTickExpression="${var:Demolish}*${var:Coeurl}*100" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Asynchronous="False" DebugLevel="None">
+                <Condition Enabled="false" Grouping="And">
+                  <ConditionSingle Enabled="false" ExpressionL="${type}" ExpressionTypeL="Numeric" ExpressionR="26" ExpressionTypeR="Numeric" ConditionType="StringEqualCase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="5" AuraOp="DeactivateAura" AuraImageMode="Zoom" AuraName="Demolish-Image-Aura" AuraImage="https://raw.githubusercontent.com/dansa/FFXIV-Trigg/master/Resources/ComboGIFgreen.gif" AuraXIniExpression="1195" AuraYIniExpression="624" AuraWIniExpression="${var:AuraWidth}" AuraHIniExpression="${var:AuraWidth}" AuraOIniExpression="100" AuraOTickExpression="if(${var:Demolish}=1,0,1)*${var:Coeurl}*100" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Asynchronous="False" DebugLevel="None">
+                <Condition Enabled="false" Grouping="And">
+                  <ConditionSingle Enabled="false" ExpressionL="${type}" ExpressionTypeL="Numeric" ExpressionR="26" ExpressionTypeR="Numeric" ConditionType="StringEqualCase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="6" AuraOp="DeactivateAura" AuraImageMode="Zoom" AuraName="DFist-Image-Aura" AuraImage="https://raw.githubusercontent.com/dansa/FFXIV-Trigg/master/Resources/ComboGIFgreen.gif" AuraXIniExpression="1142" AuraYIniExpression="682" AuraWIniExpression="${var:AuraWidth}" AuraHIniExpression="${var:AuraWidth}" AuraOIniExpression="100" AuraOTickExpression="${var:DFist}*${var:Raptor}*100" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Asynchronous="False" DebugLevel="None">
+                <Condition Enabled="false" Grouping="And">
+                  <ConditionSingle Enabled="false" ExpressionL="${type}" ExpressionTypeL="Numeric" ExpressionR="26" ExpressionTypeR="Numeric" ConditionType="StringEqualCase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="7" AuraOp="DeactivateAura" AuraImageMode="Zoom" AuraName="TS-Image-Aura" AuraImage="https://raw.githubusercontent.com/dansa/FFXIV-Trigg/master/Resources/ComboGIFgreen.gif" AuraXIniExpression="1141" AuraYIniExpression="623" AuraWIniExpression="${var:AuraWidth}" AuraHIniExpression="${var:AuraWidth}" AuraOIniExpression="100" AuraOTickExpression="if(${var:DFist}=1,0,1)*${var:Raptor}*100" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Asynchronous="False" DebugLevel="None">
+                <Condition Enabled="false" Grouping="And">
+                  <ConditionSingle Enabled="false" ExpressionL="${type}" ExpressionTypeL="Numeric" ExpressionR="26" ExpressionTypeR="Numeric" ConditionType="StringEqualCase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="8" SystemBeepFreqExpression="500" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="SystemBeep" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="++ Job" Id="1cba7888-a21f-410c-9bdb-668ec7608447" RegularExpression="You change to (?&lt;class&gt;[a-zA-Z-' ]{1,31})" PrevActions="Interrupt">
+            <Actions>
+              <Action OrderNumber="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" TriggerId="bb2a3fdd-a829-4e86-a364-43593c58a720" TriggerForce="regexp,conditions" ActionType="Trigger">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${class}" ExpressionTypeL="String" ExpressionR="monk" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="2" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" TriggerId="77049240-5817-48de-8f5b-822f4caa114e" TriggerForce="regexp,conditions" ActionType="Trigger">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${class}" ExpressionTypeL="String" ExpressionR="monk" ExpressionTypeR="String" ConditionType="StringNotEqualNocase" />
+                </Condition>
+                <Conditions />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="And" />
+          </Trigger>
+          <Trigger Enabled="true" Source="FFXIVNetwork" Sequential="True" Name="+ Load" Id="bb2a3fdd-a829-4e86-a364-43593c58a720" RegularExpression="\A00\|[^\|]*\|0038\|\|!mnkload">
+            <Actions>
+              <Action OrderNumber="0" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" TriggerId="5b892d6f-cc3c-413e-bd1b-f3f305cb333c" TriggerForce="regexp,conditions" ActionType="Trigger">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="1" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" TriggerId="1aecc4e7-e257-4fad-bb9c-270e5876e585" TriggerForce="regexp,conditions" ActionType="Trigger">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="3" AuraImageMode="Zoom" AuraName="Leaden Fist-Image-Aura" AuraImage="https://raw.githubusercontent.com/dansa/FFXIV-Trigg/master/Resources/ComboGIFgreen.gif" AuraXIniExpression="579" AuraYIniExpression="650" AuraWIniExpression="${var:AuraWidth}" AuraHIniExpression="${var:AuraWidth}" AuraOIniExpression="100" AuraOTickExpression="${var:Leaden}*${var:Opo}*100" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Asynchronous="False" DebugLevel="None">
+                <Condition Enabled="false" Grouping="And" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="4" AuraImageMode="Zoom" AuraName="DK-Image-Aura" AuraImage="https://raw.githubusercontent.com/dansa/FFXIV-Trigg/master/Resources/ComboGIFgreen.gif" AuraXIniExpression="575" AuraYIniExpression="605" AuraWIniExpression="${var:AuraWidth}" AuraHIniExpression="${var:AuraWidth}" AuraOIniExpression="100" AuraOTickExpression="if(${var:Leaden}=1,0,1)*${var:Opo}*100" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Asynchronous="False" DebugLevel="None">
+                <Condition Enabled="false" Grouping="And" />
+                <Conditions />
+              </Action>
+              <Action OrderNumber="5" AuraImageMode="Zoom" AuraName="Snap Punch-Image-Aura" AuraImage="https://raw.githubusercontent.com/dansa/FFXIV-Trigg/master/Resources/ComboGIFgreen.gif" AuraXIniExpression="1195" AuraYIniExpression="681" AuraWIniExpression="${var:AuraWidth}" AuraHIniExpression="${var:AuraWidth}" AuraOIniExpression="100" AuraOTickExpression="${var:Demolish}*${var:Coeurl}*100" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Asynchronous="False" DebugLevel="None">
+                <Condition Enabled="false" Grouping="And">
+                  <ConditionSingle Enabled="false" ExpressionL="${type}" ExpressionTypeL="Numeric" ExpressionR="26" ExpressionTypeR="Numeric" ConditionType="StringEqualCase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="6" AuraImageMode="Zoom" AuraName="Demolish-Image-Aura" AuraImage="https://raw.githubusercontent.com/dansa/FFXIV-Trigg/master/Resources/ComboGIFgreen.gif" AuraXIniExpression="1195" AuraYIniExpression="624" AuraWIniExpression="${var:AuraWidth}" AuraHIniExpression="${var:AuraWidth}" AuraOIniExpression="100" AuraOTickExpression="if(${var:Demolish}=1,0,1)*${var:Coeurl}*100" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Asynchronous="False" DebugLevel="None">
+                <Condition Enabled="false" Grouping="And">
+                  <ConditionSingle Enabled="false" ExpressionL="${type}" ExpressionTypeL="Numeric" ExpressionR="26" ExpressionTypeR="Numeric" ConditionType="StringEqualCase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="7" AuraImageMode="Zoom" AuraName="DFist-Image-Aura" AuraImage="https://raw.githubusercontent.com/dansa/FFXIV-Trigg/master/Resources/ComboGIFgreen.gif" AuraXIniExpression="1142" AuraYIniExpression="682" AuraWIniExpression="${var:AuraWidth}" AuraHIniExpression="${var:AuraWidth}" AuraOIniExpression="100" AuraOTickExpression="${var:DFist}*${var:Raptor}*100" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Asynchronous="False" DebugLevel="None">
+                <Condition Enabled="false" Grouping="And">
+                  <ConditionSingle Enabled="false" ExpressionL="${type}" ExpressionTypeL="Numeric" ExpressionR="26" ExpressionTypeR="Numeric" ConditionType="StringEqualCase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="8" AuraImageMode="Zoom" AuraName="TS-Image-Aura" AuraImage="https://raw.githubusercontent.com/dansa/FFXIV-Trigg/master/Resources/ComboGIFgreen.gif" AuraXIniExpression="1141" AuraYIniExpression="623" AuraWIniExpression="${var:AuraWidth}" AuraHIniExpression="${var:AuraWidth}" AuraOIniExpression="100" AuraOTickExpression="if(${var:DFist}=1,0,1)*${var:Raptor}*100" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="Aura" Asynchronous="False" DebugLevel="None">
+                <Condition Enabled="false" Grouping="And">
+                  <ConditionSingle Enabled="false" ExpressionL="${type}" ExpressionTypeL="Numeric" ExpressionR="26" ExpressionTypeR="Numeric" ConditionType="StringEqualCase" />
+                </Condition>
+                <Conditions />
+              </Action>
+              <Action OrderNumber="9" TextAuraFontSize="8.25" TextAuraFontName="Microsoft Sans Serif" ActionType="SystemBeep" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+                <Conditions />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Trigger>
+        </Triggers>
+      </Folder>
+    </Folders>
+    <Triggers />
+  </ExportedFolder>
+</TriggernometryExport>
