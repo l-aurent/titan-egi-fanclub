@@ -252,7 +252,7 @@
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
           </Trigger>
-          <Trigger Enabled="false" Name="+ ADJUST IMAGE AURA POSITION IN &quot;+ LOAD&quot;" Id="9974b0c8-1e8a-4344-8ff5-678e13bfb64b" RegularExpression="">
+          <Trigger Enabled="false" IsReadme="True" Name="+ ADJUST IMAGE AURA POSITION IN &quot;+ LOAD&quot;" Id="9974b0c8-1e8a-4344-8ff5-678e13bfb64b" RegularExpression="">
             <Actions />
             <Condition Enabled="false" Grouping="Or" />
           </Trigger>
